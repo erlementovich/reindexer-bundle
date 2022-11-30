@@ -12,6 +12,9 @@
             "email": "artem.erof1@gmail.com"
         }
     ],
+    "require": {
+        "php": ">=8.0"
+    },
     "require-dev": {
         "symfony/dependency-injection": "^6.1",
         "symfony/config": "^6.1",
