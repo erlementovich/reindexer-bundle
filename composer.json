@@ -1,5 +1,5 @@
 {
-    "name": "pikweb/reindexer-bundle",
+    "name": "erlementovich/reindexer-bundle",
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
@@ -9,7 +9,7 @@
     "authors": [
         {
             "name": "Artem Erofeev",
-            "email": "erofeevas@pik.ru"
+            "email": "artem.erof1@gmail.com"
         }
     ],
     "require-dev": {
