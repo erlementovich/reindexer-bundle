@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Erlementovich\TestBundle\Contract;
+namespace Pik\Reindexer\Contract;
 
 use Reindexer\Entities\Index;
 use Reindexer\Services\Namespaces;

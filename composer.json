@@ -1,14 +1,14 @@
 {
-    "name": "erlementovich/test-bundlez",
+    "name": "pikweb/reindexer-bundle",
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
-            "Erlementovich\\TestBundle\\": "src/"
+            "Pik\\Reindexer\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "erofeevas",
+            "name": "Artem Erofeev",
             "email": "erofeevas@pik.ru"
         }
     ],

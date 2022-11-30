@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Erlementovich\TestBundle\Entity;
+namespace Pik\Reindexer\Entity;
 
-use Erlementovich\TestBundle\Contract\RxClient;
-use Erlementovich\TestBundle\Contract\RxModel as RxModelContract;
+use Pik\Reindexer\Contract\RxClient;
+use Pik\Reindexer\Contract\RxModel as RxModelContract;
 
 abstract class RxModel implements RxModelContract
 {

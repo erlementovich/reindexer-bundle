@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Erlementovich\TestBundle\Client;
+namespace Pik\Reindexer\Client;
 
 use DateTime;
-use Erlementovich\TestBundle\Contract\RxClient as RxClientContract;
+use Pik\Reindexer\Contract\RxClient as RxClientContract;
 use Reindexer\Client\Api;
 use Reindexer\Entities\Index;
 use Reindexer\Services\Item;
