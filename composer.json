@@ -1,0 +1,22 @@
+{
+    "name": "erlementovich/test-bundlez",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "Erlementovich\\TestBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "erofeevas",
+            "email": "erofeevas@pik.ru"
+        }
+    ],
+    "require-dev": {
+        "symfony/dependency-injection": "^6.1",
+        "symfony/config": "^6.1",
+        "symfony/http-kernel": "^6.1",
+        "symfony/yaml": "^6.1",
+        "smolevich/reindexer-client": "^2.0"
+    }
+}
