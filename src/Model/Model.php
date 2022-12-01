@@ -9,16 +9,15 @@
 
 declare(strict_types=1);
 
-namespace Pik\Reindexer\Entity;
+namespace Pik\Reindexer\Model;
 
-use Pik\Reindexer\Contract\RxClient;
-use Pik\Reindexer\Contract\RxModel as RxModelContract;
+use Pik\Reindexer\Client\ClientInterface;
 
-abstract class RxModel implements RxModelContract
+abstract class Model implements ModelInterface
 {
     protected string $source;
 
-    public function __construct(private RxClient $connection)
+    public function __construct(private ClientInterface $connection)
     {
         $this->connection->setNamespaceName($this->source)->setNamespace();
     }
@@ -42,7 +41,7 @@ abstract class RxModel implements RxModelContract
     /**
      * @inheritDoc
      */
-    public function getConnection(): RxClient
+    public function getConnection(): ClientInterface
     {
         return $this->connection;
     }
@@ -50,7 +49,7 @@ abstract class RxModel implements RxModelContract
     /**
      * @inheritDoc
      */
-    public function updateField(int $id, string $field, mixed $value): RxClient
+    public function updateField(int $id, string $field, mixed $value): ClientInterface
     {
         $sql = "UPDATE $this->source SET $field = $value WHERE id = $id";
 

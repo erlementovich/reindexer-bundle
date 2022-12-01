@@ -9,13 +9,13 @@
 
 declare(strict_types=1);
 
-namespace Pik\Reindexer\Contract;
+namespace Pik\Reindexer\Client;
 
 use Reindexer\Entities\Index;
 use Reindexer\Services\Namespaces;
 use Reindexer\Services\Query;
 
-interface RxClient
+interface ClientInterface
 {
     /**
      * @return string
@@ -25,12 +25,12 @@ interface RxClient
     /**
      * @param string $namespaceName
      *
-     * @return RxClient
+     * @return ClientInterface
      */
     public function setNamespaceName(string $namespaceName): self;
 
     /**
-     * @return RxClient
+     * @return ClientInterface
      */
     public function setNamespace(): self;
 
@@ -94,7 +94,7 @@ interface RxClient
     /**
      * @param $sql
      *
-     * @return RxClient
+     * @return ClientInterface
      */
     public function get($sql): self;
 
@@ -117,14 +117,14 @@ interface RxClient
      * @param int $id
      * @param string $query
      *
-     * @return RxClient
+     * @return ClientInterface
      */
     public function getById(int $id, string $query = ''): self;
 
     /**
      * @param string $guid
      *
-     * @return RxClient
+     * @return ClientInterface
      */
     public function getByGuid(string $guid): self;
 

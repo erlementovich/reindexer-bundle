@@ -9,9 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Pik\Reindexer\Contract;
+namespace Pik\Reindexer\Model;
 
-interface RxModel
+use Pik\Reindexer\Client\ClientInterface;
+
+interface ModelInterface
 {
     /**
      * Получение названия индекса
@@ -32,9 +34,9 @@ interface RxModel
     /**
      * Соединение с клиентом Rx
      *
-     * @return RxClient
+     * @return ClientInterface
      */
-    public function getConnection(): RxClient;
+    public function getConnection(): ClientInterface;
 
     /**
      * Обновление одного поля в документе
@@ -43,9 +45,9 @@ interface RxModel
      * @param string $field название поля
      * @param mixed $value значение
      *
-     * @return RxClient
+     * @return ClientInterface
      */
-    public function updateField(int $id, string $field, mixed $value): RxClient;
+    public function updateField(int $id, string $field, mixed $value): ClientInterface;
 
     /**
      * Переиднексация данных в rx

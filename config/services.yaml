@@ -2,20 +2,20 @@ parameters:
     rx.endpoint: '%env(RX_ENDPOINT)%'
     rx.dbname: '%env(RX_DB_NAME)%'
 services:
-    Pik\Reindexer\Contract\RxClient:
-        class: Pik\Reindexer\Client\RxClient
+    Pik\Reindexer\Client\ClientInterface:
+        class: Pik\Reindexer\Client\Client
         arguments:
             $endpoint: '%rx.endpoint%'
             $dbname: '%rx.dbname%'
 
-    Pik\Reindexer\Contract\RxModel:
-        class: Pik\Reindexer\Entity\RxModel
+    Pik\Reindexer\Model\ModelInterface:
+        class: Pik\Reindexer\Model\Model
         autowire: true
 
     pik.reindexer.client:
-        alias: Pik\Reindexer\Contract\RxClient
+        alias: Pik\Reindexer\Client\ClientInterface
         public: true
 
     pik.reindexer.model:
-        alias: Pik\Reindexer\Contract\RxModel
+        alias: Pik\Reindexer\Model\ModelInterface
         public: true

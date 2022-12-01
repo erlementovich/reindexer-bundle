@@ -12,14 +12,13 @@ declare(strict_types=1);
 namespace Pik\Reindexer\Client;
 
 use DateTime;
-use Pik\Reindexer\Contract\RxClient as RxClientContract;
 use Reindexer\Client\Api;
 use Reindexer\Entities\Index;
 use Reindexer\Services\Item;
 use Reindexer\Services\Namespaces;
 use Reindexer\Services\Query;
 
-final class RxClient implements RxClientContract
+final class Client implements ClientInterface
 {
     private Api $api;
 
