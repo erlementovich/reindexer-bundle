@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://sentry.io/?utm_source=github&utm_medium=logo" target="_blank">
-    <img src="https://i.ibb.co/rQ5NYgK/reindexer.png" alt="pik-reindexer" width="500" height="223">
+    <img src="https://i.ibb.co/r2JSLGm/reindexer.png" alt="pik-reindexer" width="300" height="107">
   </a>
 </p>
 
