@@ -1,7 +1,7 @@
 {
     "name": "erlementovich/reindexer-bundle",
+    "description": "Bundle for reindexer https://github.com/Restream/reindexer",
     "type": "symfony-bundle",
-    "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.1"
     },
     "require-dev": {
         "symfony/dependency-injection": "^6.1",
