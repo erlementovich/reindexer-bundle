@@ -1,17 +1,19 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * @author Erofeev Artem <erofeevas@pik.ru>
- * @date 30.11.2022
- * @time 14:26
+ * @author    Erofeev Artem <erofeevas@pik.ru>
+ * @copyright Copyright (c) 2022, PIK Digital
+ * @see       https://pik.digital
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 declare(strict_types=1);
 
-namespace Pik\Reindexer\Model;
+namespace Pik\Bundle\ReindexerBundle\Model;
 
-use Pik\Reindexer\Client\ClientInterface;
+use Pik\Bundle\ReindexerBundle\Client\ClientInterface;
 
 abstract class Model implements ModelInterface
 {
@@ -23,7 +25,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSource(): string
     {
@@ -31,7 +33,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function delete(int $id): void
     {
@@ -39,7 +41,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getConnection(): ClientInterface
     {
@@ -47,7 +49,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function updateField(int $id, string $field, mixed $value): ClientInterface
     {
@@ -57,7 +59,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function reindex(array $data, bool $update = false): void
     {
@@ -70,7 +72,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function mapping(array $data): array
     {
@@ -87,9 +89,9 @@ abstract class Model implements ModelInterface
 
             // приводим тип данных, если задан тип (и значение это не значение по умолчанию)
             if (!empty($this->_mapping[$key][0]) && (!array_key_exists(
-                        2,
-                        $this->_mapping[$key]
-                    ) || $value !== $this->_mapping[$key][2])) {
+                2,
+                $this->_mapping[$key]
+            ) || $value !== $this->_mapping[$key][2])) {
                 $value = call_user_func($this->_mapping[$key][0], $value);
             }
 
@@ -106,7 +108,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getById(int $id): mixed
     {
@@ -114,7 +116,7 @@ abstract class Model implements ModelInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getByIds(array $ids): mixed
     {

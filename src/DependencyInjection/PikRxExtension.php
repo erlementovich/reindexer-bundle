@@ -1,15 +1,17 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * @author Erofeev Artem <erofeevas@pik.ru>
- * @date 30.11.2022
- * @time 19:45
+ * @author    Erofeev Artem <erofeevas@pik.ru>
+ * @copyright Copyright (c) 2022, PIK Digital
+ * @see       https://pik.digital
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 declare(strict_types=1);
 
-namespace Pik\Reindexer\DependencyInjection;
+namespace Pik\Bundle\ReindexerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -19,7 +21,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class PikRxExtension extends Extension
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {

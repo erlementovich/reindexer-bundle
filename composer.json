@@ -1,17 +1,22 @@
 {
     "name": "erlementovich/reindexer-bundle",
-    "description": "Bundle for reindexer https://github.com/Restream/reindexer",
+    "description": "Symfony integration for Reindexer (https://github.com/Restream/reindexer)",
     "type": "symfony-bundle",
+    "keywords": ["pik", "reindexer"],
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Pik\\Reindexer\\": "src/"
+            "Pik\\Bundle\\ReindexerBundle\\": "src/"
         }
     },
     "authors": [
         {
             "name": "Artem Erofeev",
             "email": "artem.erof1@gmail.com"
+        },
+        {
+            "name": "Danila Molchanov",
+            "email": "danila.molchanovv@gmail.com"
         }
     ],
     "require": {
@@ -22,6 +27,23 @@
         "symfony/config": "^6.1",
         "symfony/http-kernel": "^6.1",
         "symfony/yaml": "^6.1",
-        "smolevich/reindexer-client": "^2.0"
+        "smolevich/reindexer-client": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "phpstan/phpstan": "^1.10"
+    },
+    "scripts": {
+        "all-check": [
+            "@cs-sniff",
+            "@phpstan"
+        ],
+        "cs-sniff": [
+            "./vendor/bin/php-cs-fixer fix src -v --dry-run --using-cache=no --show-progress=none"
+        ],
+        "cs-lint": [
+            "./vendor/bin/php-cs-fixer fix src -v"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse --xdebug -c .phpstan.dist.neon --no-progress --memory-limit 512M"
+        ]
     }
 }

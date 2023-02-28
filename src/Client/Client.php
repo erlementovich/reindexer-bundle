@@ -1,17 +1,18 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * @author Erofeev Artem <erofeevas@pik.ru>
- * @date 30.11.2022
- * @time 12:48
+ * @author    Erofeev Artem <erofeevas@pik.ru>
+ * @copyright Copyright (c) 2022, PIK Digital
+ * @see       https://pik.digital
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 declare(strict_types=1);
 
-namespace Pik\Reindexer\Client;
+namespace Pik\Bundle\ReindexerBundle\Client;
 
-use DateTime;
 use Reindexer\Client\Api;
 use Reindexer\Entities\Index;
 use Reindexer\Services\Item;
@@ -45,7 +46,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getNamespaceName(): string
     {
@@ -53,16 +54,17 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function setNamespaceName(string $namespaceName): self
     {
         $this->namespaceName = $namespaceName;
+
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function setNamespace(): self
     {
@@ -74,7 +76,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getNamespace(): Namespaces
     {
@@ -82,7 +84,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function deleteNamespace(): bool
     {
@@ -103,7 +105,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function createNamespace(string $namespace, array $indexes): void
     {
@@ -111,7 +113,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function createIndex(): Index
     {
@@ -119,7 +121,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function checkItem(int $itemId): bool
     {
@@ -132,7 +134,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function updateItem(array $data, string $updateFieldName = 'updatedAt'): bool
     {
@@ -140,15 +142,15 @@ final class Client implements ClientInterface
             return false;
         }
 
-        $item = $this->getById((int)$data['id'])->getItem();
+        $item = $this->getById((int) $data['id'])->getItem();
 
         if (!$item) {
             return false;
         }
 
-        $itemData = $this->arrayMergeRecursiveDistinct((array)$item, $data);
+        $itemData = $this->arrayMergeRecursiveDistinct((array) $item, $data);
 
-        $itemData[$updateFieldName] = (new DateTime('now'))->format('Y-m-d H:i:s');
+        $itemData[$updateFieldName] = (new \DateTime('now'))->format('Y-m-d H:i:s');
 
         $this->saveItem($itemData);
 
@@ -156,7 +158,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function saveItem(array $data): void
     {
@@ -164,11 +166,11 @@ final class Client implements ClientInterface
         $item->setDatabase($this->database);
         $item->setNamespace($this->namespaceName);
 
-        $this->checkItem((int)$data['id']) ? $item->update($data) : $item->add($data);
+        $this->checkItem((int) $data['id']) ? $item->update($data) : $item->add($data);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function deleteItem(array $data = []): void
     {
@@ -180,7 +182,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function query(): Query
     {
@@ -191,7 +193,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get($sql): self
     {
@@ -199,6 +201,7 @@ final class Client implements ClientInterface
 
         if (empty($response)) {
             $this->result = null;
+
             return $this;
         }
 
@@ -209,7 +212,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getItem(): mixed
     {
@@ -217,7 +220,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getItems(): mixed
     {
@@ -225,7 +228,7 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getTotalItems(): int
     {
@@ -233,25 +236,27 @@ final class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getById(int $id, string $query = ''): self
     {
         $sql = "SELECT * FROM $this->namespaceName WHERE id = $id $query";
+
         return $this->get($sql);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getByGuid(string $guid): self
     {
         $sql = "SELECT * FROM $this->namespaceName WHERE guid = $guid";
+
         return $this->get($sql);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function arrayMergeRecursiveDistinct(array $array1, array $array2): array
     {
