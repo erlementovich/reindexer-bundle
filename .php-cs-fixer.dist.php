@@ -13,7 +13,7 @@ return (new PhpCsFixer\Config())
     ->setRules([
         '@Symfony' => true,
         'declare_strict_types' => true,
-//        'final_internal_class' => ['consider_absent_docblock_as_internal_class' => true],
+        'final_internal_class' => ['consider_absent_docblock_as_internal_class' => true],
         'concat_space' => ['spacing' => 'one'],
         'phpdoc_separation' => ['groups' => [['author', 'copyright', 'see']]],
         'phpdoc_align' => ['align' => 'left'],

@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @author    Erofeev Artem <erofeevas@pik.ru>
+ * @author    Erofeev Artem <artem.erof1@gmail.com>
+ * @author    Molchanov Danila <danila.molchanovv@gmail.com>
  * @copyright Copyright (c) 2022, PIK Digital
  * @see       https://pik.digital
  *
@@ -15,12 +16,13 @@ namespace Pik\Bundle\ReindexerBundle\Model;
 
 use Pik\Bundle\ReindexerBundle\Client\ClientInterface;
 
-abstract class Model implements ModelInterface
+abstract class AbstractModel implements ModelInterface
 {
     protected string $source;
 
-    public function __construct(private ClientInterface $connection)
-    {
+    public function __construct(
+        private readonly ClientInterface $connection,
+    ) {
         $this->connection->setNamespaceName($this->source)->setNamespace();
     }
 

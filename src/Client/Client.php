@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @author    Erofeev Artem <erofeevas@pik.ru>
+ * @author    Erofeev Artem <artem.erof1@gmail.com>
+ * @author    Molchanov Danila <danila.molchanovv@gmail.com>
  * @copyright Copyright (c) 2022, PIK Digital
  * @see       https://pik.digital
  *
@@ -21,28 +22,16 @@ use Reindexer\Services\Query;
 
 final class Client implements ClientInterface
 {
-    private Api $api;
-
-    private string $database;
-
     private Namespaces $namespace;
 
     private string $namespaceName;
 
     private mixed $result;
 
-    public function __construct(string $endpoint, string $dbname)
-    {
-        $this->init($endpoint, $dbname);
-    }
-
-    private function init(string $endpoint, string $dbname): void
-    {
-        if (empty($this->api)) {
-            $this->api = new Api($endpoint);
-        }
-
-        $this->database = $dbname;
+    public function __construct(
+        private readonly Api $api,
+        private readonly string $database,
+    ) {
     }
 
     /**
@@ -51,6 +40,14 @@ final class Client implements ClientInterface
     public function getNamespaceName(): string
     {
         return $this->namespaceName;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getApi(): Api
+    {
+        return $this->api;
     }
 
     /**

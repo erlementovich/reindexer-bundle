@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author    Erofeev Artem <erofeevas@pik.ru>
+ * @author    Erofeev Artem <artem.erof1@gmail.com>
  * @copyright Copyright (c) 2022, PIK Digital
  * @see       https://pik.digital
  *
