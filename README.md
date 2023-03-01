@@ -14,7 +14,7 @@ _Reindexer is an embeddable, in-memory, document-oriented database with a high-l
 [![License](http://poser.pugx.org/erlementovich/reindexer-bundle/license)](https://packagist.org/packages/erlementovich/reindexer-bundle)
 [![PHP Version Require](http://poser.pugx.org/erlementovich/reindexer-bundle/require/php)](https://packagist.org/packages/erlementovich/reindexer-bundle)
 
-This is the official Symfony SDK for [Reindexer](https://github.com/Restream/reindexer).
+This is the Symfony SDK for [Reindexer](https://github.com/Restream/reindexer).
 
 ### Install
 
