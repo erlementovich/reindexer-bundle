@@ -25,8 +25,6 @@ in your project. To install it please see the [docs](https://getcomposer.org/dow
 composer require erlementovich/reindexer-bundle
 ```
 
-_Note: this bundle has a **Symfony Flex Recipe** to automatically register and configure this bundle into your symfony application._
-
 If your project does *not* use Symfony Flex the following needs to be added to `config/bundles.php` manually:
 
 ```php
@@ -39,7 +37,7 @@ return [
 ```
 ### Configuration
 
-Guzzle clients can be configured in `config/packages/pik_reindexer.yaml`.
+Reindexer clients can be configured in `config/packages/pik_reindexer.yaml`.
 
 ```yaml
 pik_reindexer:
