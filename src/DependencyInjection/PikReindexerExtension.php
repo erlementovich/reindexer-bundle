@@ -16,7 +16,7 @@ namespace Pik\Bundle\ReindexerBundle\DependencyInjection;
 
 use Pik\Bundle\ReindexerBundle\Client\Client;
 use Pik\Bundle\ReindexerBundle\Client\ClientInterface;
-use Reindexer\Client\Api;
+use Pik\Bundle\ReindexerBundle\Reindexer\Api;
 use Reindexer\Client\BaseApi;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -55,6 +55,18 @@ final class PikReindexerExtension extends Extension
 
         $api = new Definition($apiClass ?? Api::class);
         $api->addArgument($options['url']);
+
+        $clientOptions = [];
+
+        $auth = $options['auth'] ?? null;
+
+        if ($auth) {
+            $clientOptions = [
+                'auth' => [$auth['user'], $auth['password']],
+            ];
+        }
+
+        $api->addArgument($clientOptions);
 
         $apiServiceName = sprintf('%s.%s.api', $this->getAlias(), $clientName);
         $container->setDefinition($apiServiceName, $api);
