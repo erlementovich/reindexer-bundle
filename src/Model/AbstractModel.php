@@ -21,7 +21,7 @@ abstract class AbstractModel implements ModelInterface
     protected string $source;
 
     public function __construct(
-        private readonly ClientInterface $connection,
+        private ClientInterface $connection,
     ) {
         $this->connection->setNamespaceName($this->source)->setNamespace();
     }

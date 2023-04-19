@@ -29,8 +29,8 @@ final class Client implements ClientInterface
     private mixed $result;
 
     public function __construct(
-        private readonly Api $api,
-        private readonly string $database,
+        private Api $api,
+        private string $database,
     ) {
     }
 
