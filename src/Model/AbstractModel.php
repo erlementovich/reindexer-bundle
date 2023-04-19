@@ -92,7 +92,7 @@ abstract class AbstractModel implements ModelInterface
             // приводим тип данных, если задан тип (и значение это не значение по умолчанию)
             if (!empty($this->_mapping[$key][0]) && (!array_key_exists(
                 2,
-                $this->_mapping[$key]
+                $this->_mapping[$key],
             ) || $value !== $this->_mapping[$key][2])) {
                 $value = call_user_func($this->_mapping[$key][0], $value);
             }

@@ -17,11 +17,11 @@ namespace Pik\Bundle\ReindexerBundle\DependencyInjection;
 use Pik\Bundle\ReindexerBundle\Client\Client;
 use Pik\Bundle\ReindexerBundle\Client\ClientInterface;
 use Reindexer\Client\Api;
-use Symfony\Component\Config\FileLocator;
+use Reindexer\Client\BaseApi;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 final class PikReindexerExtension extends Extension
 {
@@ -47,7 +47,13 @@ final class PikReindexerExtension extends Extension
 
     private function createApi(ContainerBuilder $container, string $clientName, array $options): Definition
     {
-        $api = new Definition(Api::class);
+        $apiClass = $options['api_class'] ?? null;
+
+        if ($apiClass && !is_subclass_of($apiClass, BaseApi::class)) {
+            throw new InvalidArgumentException(sprintf('%s in not subclass of %s', $apiClass, BaseApi::class));
+        }
+
+        $api = new Definition($apiClass ?? Api::class);
         $api->addArgument($options['url']);
 
         $apiServiceName = sprintf('%s.%s.api', $this->getAlias(), $clientName);

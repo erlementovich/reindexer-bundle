@@ -15,8 +15,9 @@ return (new PhpCsFixer\Config())
         'declare_strict_types' => true,
         'final_internal_class' => ['consider_absent_docblock_as_internal_class' => true],
         'concat_space' => ['spacing' => 'one'],
-        'phpdoc_separation' => ['groups' => [['author', 'copyright', 'see']]],
+        'phpdoc_separation' => ['groups' => [['author', 'copyright', 'license', 'date', 'time', 'see']]],
         'phpdoc_align' => ['align' => 'left'],
+        'trailing_comma_in_multiline' => ['elements' => ['arrays', 'arguments', 'parameters']],
     ])
     ->setFinder($finder)
 ;

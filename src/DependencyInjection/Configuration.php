@@ -50,6 +50,7 @@ final class Configuration implements ConfigurationInterface
         $nodeChildren
             ->scalarNode('url')->end()
             ->scalarNode('dbname')->end()
+            ->scalarNode('api_class')->defaultNull()->end()
         ;
 
         return $node;
