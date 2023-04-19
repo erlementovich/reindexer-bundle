@@ -45,6 +45,9 @@ pik_reindexer:
         first:
             url: 'http://url'
             dbname: 'firstdbname'
+            auth:
+                user: example_user
+                password: 12345
             api_class: App\Reindexer\Api
         second:
             url: 'http://url'
