@@ -20,8 +20,6 @@ abstract class AbstractModel implements ModelInterface
 {
     protected string $source;
 
-    private bool $isAssociative = false;
-
     public function __construct(
         private ClientInterface $connection,
     ) {
@@ -135,7 +133,6 @@ abstract class AbstractModel implements ModelInterface
      */
     public function setIsAssociative(bool $isAssociative): self
     {
-        $this->isAssociative = $isAssociative;
         $this->getConnection()->setIsAssociative($isAssociative);
 
         return $this;
