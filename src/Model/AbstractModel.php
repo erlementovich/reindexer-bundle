@@ -127,4 +127,14 @@ abstract class AbstractModel implements ModelInterface
 
         return $this->connection->get($sql)->getItems();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsAssociative(bool $isAssociative): self
+    {
+        $this->getConnection()->setIsAssociative($isAssociative);
+
+        return $this;
+    }
 }

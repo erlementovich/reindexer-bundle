@@ -67,4 +67,9 @@ interface ModelInterface
      * Получение записей по уникальным идентификаторам
      */
     public function getByIds(array $ids): mixed;
+
+    /**
+     * Задание ассоциативности вывода у результата запроса.
+     */
+    public function setIsAssociative(bool $isAssociative): self;
 }
