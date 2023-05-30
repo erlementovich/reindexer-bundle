@@ -28,6 +28,8 @@ final class Client implements ClientInterface
 
     private mixed $result;
 
+    private bool $isAssociative = false;
+
     public function __construct(
         private Api $api,
         private string $database,
@@ -192,7 +194,7 @@ final class Client implements ClientInterface
     /**
      * {@inheritDoc}
      */
-    public function get($sql): self
+    public function get(string $sql): self
     {
         $response = $this->query()->createByHttpGet($sql);
 
@@ -202,7 +204,7 @@ final class Client implements ClientInterface
             return $this;
         }
 
-        $data = $response->getDecodedResponseBody(true);
+        $data = $response->getDecodedResponseBody($this->isAssociative);
         $this->result = $data;
 
         return $this;
@@ -213,7 +215,7 @@ final class Client implements ClientInterface
      */
     public function getItem(): mixed
     {
-        return empty($this->result['items']) ? null : $this->result['items'][0];
+        return $this->isAssociative ? $this->result['items'][0] ?? null : $this->result->items[0] ?? null;
     }
 
     /**
@@ -221,7 +223,7 @@ final class Client implements ClientInterface
      */
     public function getItems(): mixed
     {
-        return $this->result['items'] ?? null;
+        return $this->isAssociative ? $this->result['items'] ?? null : $this->result->items ?? null;
     }
 
     /**
@@ -229,7 +231,7 @@ final class Client implements ClientInterface
      */
     public function getTotalItems(): int
     {
-        return $this->result->query_total_items ?? 0;
+        return $this->isAssociative ? $this->result['query_total_items'] ?? 0 : $this->result->query_total_items ?? 0;
     }
 
     /**
@@ -268,5 +270,15 @@ final class Client implements ClientInterface
         }
 
         return $merged;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsAssociative(bool $isAssociative): self
+    {
+        $this->isAssociative = $isAssociative;
+
+        return $this;
     }
 }

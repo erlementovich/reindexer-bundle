@@ -43,7 +43,7 @@ interface ClientInterface
 
     public function query(): Query;
 
-    public function get($sql): self;
+    public function get(string $sql): self;
 
     public function getItem(): mixed;
 
@@ -56,4 +56,6 @@ interface ClientInterface
     public function getByGuid(string $guid): self;
 
     public function arrayMergeRecursiveDistinct(array $array1, array $array2): array;
+
+    public function setIsAssociative(bool $isAssociative): self;
 }
