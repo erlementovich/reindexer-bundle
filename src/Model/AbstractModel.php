@@ -20,6 +20,8 @@ abstract class AbstractModel implements ModelInterface
 {
     protected string $source;
 
+    private bool $isAssociative = false;
+
     public function __construct(
         private ClientInterface $connection,
     ) {
@@ -91,9 +93,9 @@ abstract class AbstractModel implements ModelInterface
 
             // приводим тип данных, если задан тип (и значение это не значение по умолчанию)
             if (!empty($this->_mapping[$key][0]) && (!array_key_exists(
-                2,
-                $this->_mapping[$key],
-            ) || $value !== $this->_mapping[$key][2])) {
+                        2,
+                        $this->_mapping[$key],
+                    ) || $value !== $this->_mapping[$key][2])) {
                 $value = call_user_func($this->_mapping[$key][0], $value);
             }
 
@@ -126,5 +128,16 @@ abstract class AbstractModel implements ModelInterface
         $sql = "SELECT * FROM $this->source WHERE id IN ($strIds)";
 
         return $this->connection->get($sql)->getItems();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsAssociative(bool $isAssociative): self
+    {
+        $this->isAssociative = $isAssociative;
+        $this->getConnection()->setIsAssociative($isAssociative);
+
+        return $this;
     }
 }
