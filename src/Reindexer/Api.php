@@ -26,7 +26,7 @@ final class Api extends BaseApi
     {
         try {
             $response = $this->client->request($method, $this->host . $uri, [
-                'json' => $body,
+                'json' => $body ? json_decode($body, true) : [],
                 'headers' => $headers,
             ]);
 
