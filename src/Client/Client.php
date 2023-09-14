@@ -249,7 +249,7 @@ final class Client implements ClientInterface
      */
     public function getByGuid(string $guid): self
     {
-        $sql = "SELECT * FROM $this->namespaceName WHERE guid = $guid";
+        $sql = "SELECT * FROM $this->namespaceName WHERE guid = `$guid`";
 
         return $this->get($sql);
     }
